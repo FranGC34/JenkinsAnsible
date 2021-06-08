@@ -2,7 +2,8 @@
 - hosts: all
   remote_user: root
   tasks:
-  - name: Ensure Apache is at the latest version
-    apt: name=apache2 state=latest
-  - name: ensure apache is running
-    service: name=apache2 state=started enabled=yes
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /etc/some_directory
+      state: directory
+      mode: '0755'
